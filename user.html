@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenJT</title>
+  <link rel="stylesheet" href="style.css">
+
+
+  <link rel="stylesheet" href="https://i.icomoon.io/public/temp/beb28ce70c/UntitledProject/style.css">
+
+</head>
+
+<body>
+  <header id="nav">
+    <a href="#" class="logo"><span class="icon-aperture-alt"></span>penJT</a>
+    <ul>
+      <li><a href="index.html">关于我们</a></li>
+      <li><a href="function.html">产品功能</a></li>
+      <li><a href="user.html">用户数据</a></li>
+    </ul>
+  </header>
+  <section class="users">
+    <div id="container" style="height: 800px;width: 800px;"></div>
+    <h1>用户构成</h1>
+    <p>男性用户：335人，占比最高，说明男性用户是主要用户群体。
+      女性用户：310人，占比次之，说明女性用户也是重要的用户群体。
+      儿童用户：274人，占比第三，说明儿童用户有一定的比例。
+      老年人用户：235人，占比第四，说明老年人用户相对较少。
+      公司用户：400人，占比最高，说明公司用户是另一个主要用户群体。</p>
+  </section>
+
+
+
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.5.1/files/dist/echarts.min.js"></script>
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+
+    var option;
+
+    option = {
+      backgroundColor: '#fff',
+      title: {
+        text: 'Customized Pie',
+        left: 'center',
+        top: 20,
+        textStyle: {
+          color: '#ccc'
+        }
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+          colorLightness: [0, 1]
+        }
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: '55%',
+          center: ['50%', '50%'],
+          data: [
+            { value: 335, name: 'Men' },
+            { value: 310, name: 'Women' },
+            { value: 274, name: 'Children' },
+            { value: 235, name: 'Old' },
+            { value: 400, name: 'Company' }
+          ].sort(function (a, b) {
+            return a.value - b.value;
+          }),
+          roseType: 'radius',
+          label: {
+            color: 'rgba(255, 255, 255, 0.3)'
+          },
+          labelLine: {
+            lineStyle: {
+              color: 'rgba(255, 255, 255, 0.3)'
+            },
+            smooth: 0.2,
+            length: 10,
+            length2: 20
+          },
+          itemStyle: {
+            color: '#c23531',
+            shadowBlur: 200,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          },
+          animationType: 'scale',
+          animationEasing: 'elasticOut',
+          animationDelay: function (idx) {
+            return Math.random() * 200;
+          }
+        }
+      ]
+    };
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+  <div class="footer">
+
+    <div class="copyright">
+      <a href="#"><span class="icon-aperture-alt"></span>penJT</a>
+      <p>OpenJT致力于推动人工智能技术的发展与应用，与国内外顶尖科研机构和高校合作，提供前沿的AI解决方案<br>
+        © 2023年OpenJT Inc. 保留所有权利。-京ICP备20230001号
+      </p>
+      <a href="#" class="app">下载app</a>
+    </div>
+    <div class="links" id="links">
+      <dl>
+        <dt>
+          关于OpenJT
+        </dt>
+
+        <dd><a href="#">产品</a></dd>
+        <dd><a href="#">管理团队</a></dd>
+        <dd><a href="#">工作机会</a></dd>
+        <dd><a href="#">客户服务</a></dd>
+        <dd><a href="#">帮助</a></dd>
+
+      </dl>
+      <dl>
+        <dt>
+          产品功能
+        </dt>
+
+        <dd><a href="function.html">功能</a></dd>
+
+
+      </dl>
+      <dl>
+        <dt>
+          加入我们
+        </dt>
+
+        <dd><a href="#">校园招聘</a></dd>
+        <dd><a href="#">招聘网站→</a></dd>
+
+
+      </dl>
+    </div>
+
+  </div>
+</body>
+
+</html>
